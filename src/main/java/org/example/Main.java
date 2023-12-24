@@ -10,8 +10,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        TaskManager tasks = new TaskManager();
         String saveFilePath = "/home/" + System.getProperty("user.name") + "/.cache/TJM/data.ser";
+        TaskManager tasks = Serializer.deserialize(saveFilePath, TaskManager.class);
+
+        if(tasks == null) {
+            tasks = new TaskManager();
+            System.out.println("Save file not found, created new TaskManager");
+        } else {
+            System.out.println("Loaded previously saved TaskManager");
+        }
 
         System.out.println("Welcome to Java Task Manager, or JTM. Type h for help.");
 
