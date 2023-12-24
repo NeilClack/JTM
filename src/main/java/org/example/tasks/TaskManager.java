@@ -3,12 +3,13 @@ package org.example.tasks;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.io.Serializable;
 
 /**
  * The TaskManager class manages a collection of tasks.
  * It provides methods for adding tasks to the collection and retrieving the list of tasks.
  */
-public class TaskManager {
+public class TaskManager implements Serializable {
     /**
      * The list of tasks managed by the TaskManager.
      */

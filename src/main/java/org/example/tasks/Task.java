@@ -2,10 +2,11 @@ package org.example.tasks;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.Serializable;
 /**
  * Represents a task with content, timestamp, and completion status.
  */
-public class Task {
+public class Task implements Serializable {
     /**
      * The content of the task.
      */

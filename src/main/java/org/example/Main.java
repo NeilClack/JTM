@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.lib.Serializer;
 import org.example.tasks.Task;
 import org.example.tasks.TaskManager;
 
@@ -10,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         TaskManager tasks = new TaskManager();
+        String saveFilePath = "/home/" + System.getProperty("user.name") + "/.cache/TJM/data.ser";
 
         System.out.println("Welcome to Java Task Manager, or JTM. Type h for help.");
 
@@ -41,6 +43,10 @@ public class Main {
                         System.out.println(task.toString());
                     }
                     break;
+                case "s":
+                    Serializer.serialize(tasks, saveFilePath);
+                    System.out.println("Saved data to disk at " + saveFilePath);
+                    break;
                 case "h":
                     // Print the help message
                     System.out.println("""
@@ -50,6 +56,7 @@ public class Main {
                               n - Add a new task
                               l - List incomplete tasks
                              la - List all tasks, including completed
+                              s - Save current TaskManager and Tasks to disk
                               h - Show this help message
                               q - Quit the program""");
                     break;
